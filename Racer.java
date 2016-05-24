@@ -14,29 +14,34 @@ public class Racer extends Observable {
         x = 0;
         y = 0;
         speed = 5;
-        direction = "right";
-        field = new int[WIDTH][HEIGHT];
+        direction = "up";
+        field = new int[640][360];
+    }
 
-
+    public Racer(int x, int y){
+        this.x = x;
+        this.y = y;
+        speed = 5;
+        direction = "up";
+        field = new int[640][360];
     }
 
     public void move()
     {
         switch(direction) {
-            case "up"
+            case "up":
                 moveUp();
                 break;
-            case "down"
+            case "down":
                 moveDown();
                 break;
-            case "left"
+            case "left":
                 moveLeft();
                 break;
-            case "right"
+            case "right":
                 moveRight();
                 break;
         }
-        changeField()
         setChanged();
         notifyObservers();
 
@@ -47,10 +52,23 @@ public class Racer extends Observable {
 
     }
 
+    public void setDirection(String direction)
+    {
+        this.direction = direction;
+    }
+
+
+
+    public String getDirection()
+    {
+        return direction;
+    }
+
     public boolean checkDead()
     {
 
 
+        return true;
     }
 
     public void moveUp()
